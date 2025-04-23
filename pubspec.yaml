@@ -1,0 +1,43 @@
+name: effective_error_handling
+description: "A Flutter application demonstrating effective error handling patterns"
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  flutter_localizations:
+    sdk: flutter
+  flutter:
+    sdk: flutter
+  dio: ^5.4.0
+  dio_cache_interceptor: ^3.5.0
+  dio_smart_retry: ^6.0.0
+  dartz: ^0.10.1
+  flutter_modular: ^6.3.4
+  bloc: ^8.1.4
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.5
+  lottie: ^3.1.1
+
+flutter_intl:
+  main_locale: es
+  enabled: true
+
+dev_dependencies:
+  build_runner: ^2.4.11
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  mockito: ^5.4.4
+  test: ^1.25.2
+  freezed: ^2.5.2
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - images/
+    - images/animations/
