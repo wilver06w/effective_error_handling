@@ -1,15 +1,15 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../shared/http/failures.dart';
-import '../../domain/repositories/abstract_archetypes_repository.dart';
-import '../data_sources/remote/archetypes_impl_api.dart';
+import '../../domain/repositories/archetypes_repository.dart';
+import '../data_sources/remote/archetypes_api_remote.dart';
 import '../models/archetype.dart';
 
-class OrdersRepositoryImpl extends AbstractOrdersRepository {
+class OrdersRepositoryImpl extends OrdersRepository {
   OrdersRepositoryImpl({
     required this.apiRemote,
   });
-  final OrdersImplApiRemote apiRemote;
+  final OrdersApiRemote apiRemote;
 
   @override
   Future<Either<Failure, List<Archetype>>> getArchetypes() async {

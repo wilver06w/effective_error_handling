@@ -1,10 +1,10 @@
 import '../../../../../shared/http/failures.dart';
 import '../../../../../shared/http/http_client.dart';
 import '../../models/archetype.dart';
-import 'abstract_archetypes_api_remote.dart';
+import 'archetypes_api_remote.dart';
 
-class OrdersImplApiRemote extends AbstractOrdersApiRemote {
-  OrdersImplApiRemote({
+class OrdersApiRemoteImpl extends OrdersApiRemote {
+  OrdersApiRemoteImpl({
     required this.client,
   });
 

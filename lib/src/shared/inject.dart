@@ -1,8 +1,9 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../features/home/data/data_sources/remote/archetypes_impl_api.dart';
-import '../features/home/data/repositories/archetypes_repo_impl.dart';
-import '../features/home/domain/repositories/abstract_archetypes_repository.dart';
+import '../features/home/data/data_sources/remote/archetypes_api_remote.dart';
+import '../features/home/data/data_sources/remote/orders_api_remote_impl.dart';
+import '../features/home/data/repositories/archetypes_repository_impl.dart';
+import '../features/home/domain/repositories/archetypes_repository.dart';
 import '../features/home/domain/usecases/get_archetypes_usecase.dart';
 
 /// Módulo que contiene las dependencias de la capa de datos.
@@ -15,7 +16,7 @@ class DataModule {
   static void binds(Injector i) {
     /// Cliente remoto para obtener órdenes desde la API
     /// Implementa la lógica de comunicación HTTP y manejo de errores
-    i.addLazySingleton<OrdersImplApiRemote>(OrdersImplApiRemote.new);
+    i.addLazySingleton<OrdersApiRemote>(OrdersApiRemoteImpl.new);
   }
 }
 
@@ -29,7 +30,7 @@ class DomainModule {
   static void binds(Injector i) {
     /// Implementación concreta del repositorio de órdenes
     /// Maneja la lógica de negocio para el acceso a datos de órdenes
-    i.addLazySingleton<AbstractOrdersRepository>(OrdersRepositoryImpl.new);
+    i.addLazySingleton<OrdersRepository>(OrdersRepositoryImpl.new);
 
     /// Caso de uso para obtener órdenes
     /// Encapsula la lógica de negocio para la obtención de órdenes
