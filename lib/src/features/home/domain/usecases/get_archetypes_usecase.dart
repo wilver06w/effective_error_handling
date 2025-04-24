@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../shared/http/failures.dart';
 import '../../data/models/archetype.dart';
-import '../repositories/abstract_orders_repository.dart';
+import '../repositories/abstract_archetypes_repository.dart';
 
 class GetOrdersUseCase {
   GetOrdersUseCase({
@@ -10,6 +10,6 @@ class GetOrdersUseCase {
   });
   final AbstractOrdersRepository repository;
 
-  Future<Either<Failure, List<Archetype>>> getOrders() async =>
-      repository.getOrders();
+  Future<Either<Failure, List<Archetype>>> getArchetypes() async =>
+      repository.getArchetypes();
 }

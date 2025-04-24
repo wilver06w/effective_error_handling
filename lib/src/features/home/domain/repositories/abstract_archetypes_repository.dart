@@ -4,5 +4,5 @@ import '../../../../shared/http/failures.dart';
 import '../../data/models/archetype.dart';
 
 abstract class AbstractOrdersRepository {
-  Future<Either<Failure, List<Archetype>>> getOrders();
+  Future<Either<Failure, List<Archetype>>> getArchetypes();
 }

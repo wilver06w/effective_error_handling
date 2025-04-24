@@ -17,12 +17,12 @@ class Body extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Expanded(
-                child: BlocBuilder<BlocOrders, OrdersState>(
-                  builder: (BuildContext context, OrdersState state) {
+                child: BlocBuilder<BlocArchetypes, ArchetypesState>(
+                  builder: (BuildContext context, ArchetypesState state) {
                     final List<Archetype> listArchetype =
                         state.model.listArchetype ?? <Archetype>[];
 
-                    if (state is ErrorGetOrderState) {
+                    if (state is ErrorGetArchetypeState) {
                       return const Center(
                         child: Icon(
                           Icons.flutter_dash_outlined,

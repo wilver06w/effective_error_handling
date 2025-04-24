@@ -1,7 +1,7 @@
 import '../../../../../shared/http/failures.dart';
 import '../../../../../shared/http/http_client.dart';
 import '../../models/archetype.dart';
-import 'abstract_orders_api_remote.dart';
+import 'abstract_archetypes_api_remote.dart';
 
 class OrdersImplApiRemote extends AbstractOrdersApiRemote {
   OrdersImplApiRemote({
@@ -13,7 +13,7 @@ class OrdersImplApiRemote extends AbstractOrdersApiRemote {
   final String archetypeUrl = '/v7/archetypes.php';
 
   @override
-  Future<List<Archetype>> getOrders() async {
+  Future<List<Archetype>> getArchetypes() async {
     try {
       final Response<dynamic> response =
           await client.msDio.get<dynamic>(archetypeUrl);
@@ -35,7 +35,7 @@ class OrdersImplApiRemote extends AbstractOrdersApiRemote {
   }
 
   @override
-  Future<List<Archetype>> processOrders(List<Archetype> orders) async {
+  Future<List<Archetype>> processArchetype(List<Archetype> orders) async {
     try {
       final Response<dynamic> response = await client.msDio.post<dynamic>(
         archetypeUrl,

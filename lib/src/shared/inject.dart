@@ -1,9 +1,9 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../features/home/data/data_sources/remote/orders_impl_api.dart';
-import '../features/home/data/repositories/orders_repo_impl.dart';
-import '../features/home/domain/repositories/abstract_orders_repository.dart';
-import '../features/home/domain/usecases/get_order_usecase.dart';
+import '../features/home/data/data_sources/remote/archetypes_impl_api.dart';
+import '../features/home/data/repositories/archetypes_repo_impl.dart';
+import '../features/home/domain/repositories/abstract_archetypes_repository.dart';
+import '../features/home/domain/usecases/get_archetypes_usecase.dart';
 
 /// Módulo que contiene las dependencias de la capa de datos.
 ///

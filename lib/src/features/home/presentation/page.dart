@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../shared/http/http_client.dart'
-    hide ModularWatchExtension;
+import '../../../shared/http/http_client.dart' hide ModularWatchExtension;
 import '../../../shared/utils/loading.dart';
 import '../data/models/archetype.dart';
-import '../domain/usecases/get_order_usecase.dart';
+import '../domain/usecases/get_archetypes_usecase.dart';
 import 'bloc/bloc.dart';
 
 part 'package:effective_error_handling/src/features/home/presentation/widgets/body.dart';
@@ -18,11 +17,11 @@ class Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GetOrdersUseCase getOrdersUseCase = Modular.get<GetOrdersUseCase>();
-    return BlocProvider<BlocOrders>(
-      create: (BuildContext context) => BlocOrders(
+    return BlocProvider<BlocArchetypes>(
+      create: (BuildContext context) => BlocArchetypes(
         getOrdersUseCase: getOrdersUseCase,
-      )..add(const GetOrderListEvent()),
-      child: const BlocListener<BlocOrders, OrdersState>(
+      )..add(const GetArchetypesEvent()),
+      child: const BlocListener<BlocArchetypes, ArchetypesState>(
         listener: _listener,
         child: Body(),
       ),
@@ -30,10 +29,10 @@ class Page extends StatelessWidget {
   }
 }
 
-Future<void> _listener(BuildContext context, OrdersState state) async {
-  if (state is LoadingGetOrderState) {
+Future<void> _listener(BuildContext context, ArchetypesState state) async {
+  if (state is LoadingGetArchetypeState) {
     AppLoading.show(context);
-  } else if (state is ErrorGetOrderState) {
+  } else if (state is ErrorGetArchetypeState) {
     Navigator.pop(context);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -41,7 +40,7 @@ Future<void> _listener(BuildContext context, OrdersState state) async {
         backgroundColor: Colors.red,
       ),
     );
-  } else if (state is LoadedGetOrderState) {
+  } else if (state is LoadedGetArchetypeState) {
     Navigator.pop(context);
   }
 }
