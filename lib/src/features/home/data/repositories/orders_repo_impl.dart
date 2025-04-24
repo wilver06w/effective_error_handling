@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:effective_error_handling/src/features/home/data/data_sources/remote/orders_impl_api.dart';
 import 'package:effective_error_handling/src/features/home/data/models/archetype.dart';
 import 'package:effective_error_handling/src/features/home/domain/repositories/abstract_orders_repository.dart';
@@ -11,12 +10,12 @@ class OrdersRepositoryImpl extends AbstractOrdersRepository {
   final OrdersImplApiRemote apiRemote;
 
   @override
-  Future<Either<Failure, List<Archetype>>> getOrders() async {
+  Future<(Failure?, List<Archetype>)> getOrders() async {
     try {
       final result = await apiRemote.getOrders();
-      return Right(result);
+      return (null, result);
     } on Failure catch (e) {
-      return Left(e);
-    } 
+      return (e, <Archetype>[]);
+    }
   }
 }

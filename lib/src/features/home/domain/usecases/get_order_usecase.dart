@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:effective_error_handling/src/features/home/data/models/archetype.dart';
 import 'package:effective_error_handling/src/features/home/domain/repositories/abstract_orders_repository.dart';
 import 'package:effective_error_handling/src/shared/http/failures.dart';
@@ -9,6 +8,6 @@ class GetOrdersUseCase {
   });
   final AbstractOrdersRepository repository;
 
-  Future<Either<Failure, List<Archetype>>> getOrders() async =>
+  Future<(Failure?, List<Archetype>)> getOrders() async =>
       await repository.getOrders();
 }

@@ -29,21 +29,25 @@ class BlocOrders extends Bloc<OrdersEvent, OrdersState> {
 
     final getOrders = await getOrdersUseCase.getOrders();
 
-    getOrders.fold((l) {
+    final failure = getOrders.$1;
+    final data = getOrders.$2;
+
+    if (failure != null) {
       emit(
         ErrorGetOrderState(
           model: state.model,
-          message: l.message,
+          message: getOrders.$1!.message,
         ),
       );
-    }, (r) {
+      return;
+    } else {
       emit(
         LoadedGetOrderState(
           state.model.copyWith(
-            listArchetype: r,
+            listArchetype: data,
           ),
         ),
       );
-    });
+    }
   }
 }

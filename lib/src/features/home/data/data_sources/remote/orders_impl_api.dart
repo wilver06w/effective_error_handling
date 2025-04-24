@@ -10,7 +10,7 @@ class OrdersImplApiRemote extends AbstractOrdersApiRemote {
 
   final HttpClient client;
 
-  final archetypeUrl = '/v7/archetypes.php';
+  final archetypeUrl = '/v7/archetypes.php*';
 
   @override
   Future<List<Archetype>> getOrders() async {
