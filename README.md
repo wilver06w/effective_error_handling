@@ -13,7 +13,7 @@ Este documento recoge observaciones realizadas con fines de revisión para la ch
 - **Warnings**: 2
 - **Hints**: 143  
   📝 Recomendación: Ejecutar `dart fix --dry-run` para identificar oportunidades de corrección automática. Alinear el proyecto con las reglas de `pedantic` o `very_good_analysis` podría mejorar la calidad del código.
-
+✅
 ---
 
 ### 2. 🧼 Uso de paquetes obsoletos
@@ -51,6 +51,7 @@ lib/
                 ├── pages/
                 ├── widgets/
                 └── bloc/
+✅
 ```
 
 Esto permite que la audiencia identifique claramente el flujo de datos y responsabilidades según los niveles de abstracción.
@@ -90,6 +91,7 @@ class InjectHome {
     DomainModule.binds(i);
   }
 }
+✅
 ```
 
 2. **Agregar documentación** sobre las dependencias inyectadas.
@@ -99,6 +101,8 @@ class InjectHome {
 /// - `OrdersImplApiRemote`: cliente remoto para obtener órdenes.
 /// - `OrdersRepositoryImpl`: implementación del repositorio de órdenes.
 /// - `GetOrdersUseCase`: caso de uso para obtener órdenes.
+
+✅
 ```
 
 3. **Asegurar testabilidad**: Verificar que las clases inyectadas tengan constructores compatibles o dependencias también registradas.
@@ -117,6 +121,7 @@ El proyecto incluye una amplia cantidad de paquetes, lo cual puede resultar abru
 
 📝 Recomendación: aclarar en la documentación o durante la charla que el uso de estos paquetes es **intencionalmente didáctico** para explorar diferentes abordajes al manejo de errores.
 
+✅
 ---
 
 ## 📘 Recomendaciones adicionales
@@ -124,4 +129,6 @@ El proyecto incluye una amplia cantidad de paquetes, lo cual puede resultar abru
 - Añadir archivos `README.md` a nivel de cada feature (`home`, `orders`, etc.) explicando brevemente la responsabilidad del módulo.
 - Documentar en `inject.dart` los bindings de dependencias, idealmente usando `get_it` o `riverpod` según convención.
 - Establecer convenciones para nombres de carpetas (por ejemplo, usar `widgets/` en lugar de `_sections/`).
+
+✅
 
