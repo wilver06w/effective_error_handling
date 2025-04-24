@@ -29,6 +29,7 @@ analyzer:
     - "dev/conductor/lib/proto/*"
     - "lib/generated"
     - "*.g.dart"
+    - "lib/src/features/home/data/models/get_orders.g.dart"
 
 linter:
   rules:

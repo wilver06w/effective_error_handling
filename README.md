@@ -11,14 +11,14 @@ Este documento recoge observaciones realizadas con fines de revisión para la ch
 ### 1. 🔧 Análisis estático de código (Dart Analysis)
 - **Errores**: 3
 - **Warnings**: 2
-- **Hints**: 143  
+- **Hints**: 143
   📝 Recomendación: Ejecutar `dart fix --dry-run` para identificar oportunidades de corrección automática. Alinear el proyecto con las reglas de `pedantic` o `very_good_analysis` podría mejorar la calidad del código.
 ✅
 ---
 
 ### 2. 🧼 Uso de paquetes obsoletos
 
-- `package_api_docs` y `unsafe_html` fueron **removidos en Dart 3.7.0**.  
+- `package_api_docs` y `unsafe_html` fueron **removidos en Dart 3.7.0**.
   ❗ Sugerencia: Revisar la versión del SDK en `pubspec.yaml` y eliminar dependencias incompatibles.
 
 ---
@@ -127,8 +127,7 @@ El proyecto incluye una amplia cantidad de paquetes, lo cual puede resultar abru
 ## 📘 Recomendaciones adicionales
 
 - Añadir archivos `README.md` a nivel de cada feature (`home`, `orders`, etc.) explicando brevemente la responsabilidad del módulo.
-- Documentar en `inject.dart` los bindings de dependencias, idealmente usando `get_it` o `riverpod` según convención.
-- Establecer convenciones para nombres de carpetas (por ejemplo, usar `widgets/` en lugar de `_sections/`).
+- Documentar en `inject.dart` los bindings de dependencias
 
 ✅
 
