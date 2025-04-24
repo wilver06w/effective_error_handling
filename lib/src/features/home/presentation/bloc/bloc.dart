@@ -1,9 +1,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:effective_error_handling/src/features/home/data/models/archetype.dart';
-import 'package:effective_error_handling/src/features/home/domain/usecases/get_order_usecase.dart';
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../../../shared/http/failures.dart';
+import '../../data/models/archetype.dart';
+import '../../domain/usecases/get_order_usecase.dart';
 
 part 'event.dart';
 part 'state.dart';
@@ -26,17 +29,16 @@ class BlocOrders extends Bloc<OrdersEvent, OrdersState> {
         state.model,
       ),
     );
+    final Either<Failure, List<Archetype>> getOrders = await getOrdersUseCase.getOrders();
 
-    final getOrders = await getOrdersUseCase.getOrders();
-
-    getOrders.fold((l) {
+    getOrders.fold((Failure l) {
       emit(
         ErrorGetOrderState(
           model: state.model,
           message: l.message,
         ),
       );
-    }, (r) {
+    }, (List<Archetype> r) {
       emit(
         LoadedGetOrderState(
           state.model.copyWith(

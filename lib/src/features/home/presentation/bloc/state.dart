@@ -5,7 +5,7 @@ abstract class OrdersState extends Equatable {
   final Model model;
 
   @override
-  List<Object?> get props => [model];
+  List<Object?> get props => <Object?>[model];
 }
 
 class InitialState extends OrdersState {
@@ -61,7 +61,7 @@ class Model extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
+    return <Object?>[
       listArchetype,
     ];
   }

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:effective_error_handling/src/features/home/data/models/archetype.dart';
-import 'package:effective_error_handling/src/shared/http/failures.dart';
+
+import '../../../../shared/http/failures.dart';
+import '../../data/models/archetype.dart';
 
 abstract class AbstractOrdersRepository {
   Future<Either<Failure, List<Archetype>>> getOrders();

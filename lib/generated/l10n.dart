@@ -28,14 +28,14 @@ class S {
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name =
+    final String name =
         (locale.countryCode?.isEmpty ?? false)
             ? locale.languageCode
             : locale.toString();
-    final localeName = Intl.canonicalizedLocale(name);
+    final String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
-      final instance = S();
+      final S instance = S();
       S._current = instance;
 
       return instance;
@@ -43,7 +43,7 @@ class S {
   }
 
   static S of(BuildContext context) {
-    final instance = S.maybeOf(context);
+    final S? instance = S.maybeOf(context);
     assert(
       instance != null,
       'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
@@ -57,12 +57,12 @@ class S {
 
   /// `No conexion`
   String get noConection {
-    return Intl.message('No conexion', name: 'noConection', desc: '', args: []);
+    return Intl.message('No conexion', name: 'noConection', desc: '', args: <Object>[]);
   }
 
   /// `Bievenido`
   String get welcome {
-    return Intl.message('Bievenido', name: 'welcome', desc: '', args: []);
+    return Intl.message('Bievenido', name: 'welcome', desc: '', args: <Object>[]);
   }
 
   /// `Error {code} \nSi el error persiste, contacta a soporte`
@@ -71,7 +71,7 @@ class S {
       'Error $code \nSi el error persiste, contacta a soporte',
       name: 'weHaveAErrorContactSuport',
       desc: '',
-      args: [code],
+      args: <Object>[code],
     );
   }
 
@@ -81,7 +81,7 @@ class S {
       'Servicio no disponible',
       name: 'serviceNotAvailable',
       desc: '',
-      args: [],
+      args: <Object>[],
     );
   }
 
@@ -91,18 +91,18 @@ class S {
       'Pedido # $value',
       name: 'orderNumber',
       desc: '',
-      args: [value],
+      args: <Object>[value],
     );
   }
 
   /// `de`
   String get ofOf {
-    return Intl.message('de', name: 'ofOf', desc: '', args: []);
+    return Intl.message('de', name: 'ofOf', desc: '', args: <Object>[]);
   }
 
   /// `Buscar`
   String get search {
-    return Intl.message('Buscar', name: 'search', desc: '', args: []);
+    return Intl.message('Buscar', name: 'search', desc: '', args: <Object>[]);
   }
 
   /// `Detalles del archetype # {value}`
@@ -111,7 +111,7 @@ class S {
       'Detalles del archetype # $value',
       name: 'detailArchetype',
       desc: '',
-      args: [value],
+      args: <Object>[value],
     );
   }
 
@@ -121,7 +121,7 @@ class S {
       'Cliente $value',
       name: 'clientValue',
       desc: '',
-      args: [value],
+      args: <Object>[value],
     );
   }
 }
@@ -141,7 +141,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   bool shouldReload(AppLocalizationDelegate old) => false;
 
   bool _isSupported(Locale locale) {
-    for (var supportedLocale in supportedLocales) {
+    for (Locale supportedLocale in supportedLocales) {
       if (supportedLocale.languageCode == locale.languageCode) {
         return true;
       }
