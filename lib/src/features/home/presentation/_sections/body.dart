@@ -33,7 +33,7 @@ class Body extends StatelessWidget {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  S.current.detailOrderNumber(
+                                  S.current.detailArchetype(
                                     item.archetypeName,
                                   ),
                                 ),

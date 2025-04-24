@@ -1,7 +1,6 @@
 import 'package:effective_error_handling/generated/l10n.dart';
 import 'package:effective_error_handling/src/features/home/data/models/archetype.dart';
 import 'package:effective_error_handling/src/features/home/domain/usecases/get_order_usecase.dart';
-import 'package:effective_error_handling/src/features/home/domain/usecases/get_search_order_usecase.dart';
 import 'package:effective_error_handling/src/features/home/presentation/bloc/bloc.dart';
 import 'package:effective_error_handling/src/shared/http/http_client.dart'
     hide ModularWatchExtension;
@@ -18,11 +17,9 @@ class Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final getOrdersUseCase = Modular.get<GetOrdersUseCase>();
-    final getSearchOrdersUseCase = Modular.get<GetSearchOrdersUseCase>();
     return BlocProvider(
       create: (context) => BlocOrders(
         getOrdersUseCase: getOrdersUseCase,
-        getSearchOrdersUseCase: getSearchOrdersUseCase,
       )..add(const GetOrderListEvent()),
       child: BlocListener<BlocOrders, OrdersState>(
         listener: _listener,
@@ -36,7 +33,7 @@ Future<void> _listener(BuildContext context, OrdersState state) async {
   if (state is LoadingGetOrderState) {
     AppLoading.show(context);
   } else if (state is ErrorGetOrderState) {
-    Navigator.pop(context);
+    // Navigator.pop(context);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(state.message),

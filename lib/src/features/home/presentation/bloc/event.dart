@@ -13,10 +13,3 @@ class GetOrderListEvent extends OrdersEvent {
   });
   final int page;
 }
-
-class SearchOrdersEvent extends OrdersEvent {
-  const SearchOrdersEvent({
-    this.search = '',
-  });
-  final String search;
-}

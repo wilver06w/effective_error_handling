@@ -22,7 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(value) => "Cliente ${value}";
 
-  static String m1(value) => "Detalles del pedido # ${value}";
+  static String m1(value) => "Detalles del archetype # ${value}";
 
   static String m2(value) => "Pedido # ${value}";
 
@@ -32,7 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "clientValue": m0,
-    "detailOrderNumber": m1,
+    "detailArchetype": m1,
     "noConection": MessageLookupByLibrary.simpleMessage("No conexion"),
     "ofOf": MessageLookupByLibrary.simpleMessage("de"),
     "orderNumber": m2,
