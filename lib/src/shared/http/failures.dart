@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
-import 'package:effective_error_handling/generated/l10n.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class Failure extends Equatable {
@@ -20,7 +17,6 @@ class ExceptionFailure extends Failure {
     this.error,
   });
   factory ExceptionFailure.decode(Exception? error) {
-    log(error.toString(), name: 'FAILURE[EXCEPTION]');
     return ExceptionFailure._(
       error: error,
       message: error.toString(),
@@ -60,8 +56,6 @@ class ErrorFailure extends Failure {
   factory ErrorFailure.decode(
     Error? error,
   ) {
-    log(error.toString(), name: 'FAILURE[ERROR]');
-    log((error?.stackTrace).toString(), name: 'FAILURE[ERROR][TRACE]');
     return ErrorFailure._(
       error: error,
       message: error.toString(),

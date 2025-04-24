@@ -2,4 +2,5 @@ import 'package:effective_error_handling/src/features/home/data/models/archetype
 
 abstract class AbstractOrdersApiRemote {
   Future<List<Archetype>> getOrders();
+  Future<List<Archetype>> processOrders(List<Archetype> orders); // to
 }

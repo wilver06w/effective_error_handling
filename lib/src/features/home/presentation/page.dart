@@ -21,7 +21,7 @@ class Page extends StatelessWidget {
       create: (context) => BlocOrders(
         getOrdersUseCase: getOrdersUseCase,
       )..add(const GetOrderListEvent()),
-      child: BlocListener<BlocOrders, OrdersState>(
+      child: const BlocListener<BlocOrders, OrdersState>(
         listener: _listener,
         child: Body(),
       ),

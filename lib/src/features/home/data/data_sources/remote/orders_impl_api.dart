@@ -10,12 +10,33 @@ class OrdersImplApiRemote extends AbstractOrdersApiRemote {
 
   final HttpClient client;
 
-  final archetypeUrl = '/v7/archetypes.php*';
+  final archetypeUrl = '/v7/archetypes.php';
 
   @override
   Future<List<Archetype>> getOrders() async {
     try {
       final response = await client.msDio.get<dynamic>(archetypeUrl);
+
+      final List<dynamic> rawListData = response.data as List<dynamic>;
+      final list = rawListData.map((p) => Archetype.fromJson(p)).toList();
+
+      return list;
+    } on DioException catch (error) {
+      throw DioFailure.decode(error);
+    } on Error catch (error) {
+      throw ErrorFailure.decode(error);
+    } on Exception catch (error) {
+      throw ExceptionFailure.decode(error);
+    }
+  }
+
+  @override
+  Future<List<Archetype>> processOrders(List<Archetype> orders) async {
+    try {
+      final response = await client.msDio.post<dynamic>(
+        archetypeUrl,
+        data: orders.map((e) => e.toJson()).toList(),
+      );
 
       final List<dynamic> rawListData = response.data as List<dynamic>;
       final list = rawListData.map((p) => Archetype.fromJson(p)).toList();
