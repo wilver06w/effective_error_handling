@@ -33,7 +33,7 @@ Future<void> _listener(BuildContext context, OrdersState state) async {
   if (state is LoadingGetOrderState) {
     AppLoading.show(context);
   } else if (state is ErrorGetOrderState) {
-    // Navigator.pop(context);
+    Navigator.pop(context);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(state.message),

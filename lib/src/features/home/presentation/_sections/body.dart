@@ -1,11 +1,10 @@
 part of 'package:effective_error_handling/src/features/home/presentation/page.dart';
 
 class Body extends StatelessWidget {
-  Body({
+  const Body({
     super.key,
   });
 
-  final formKeyPerson = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,6 +20,16 @@ class Body extends StatelessWidget {
                 child: BlocBuilder<BlocOrders, OrdersState>(
                   builder: (context, state) {
                     final listArchetype = state.model.listArchetype ?? [];
+
+                    if (state is ErrorGetOrderState) {
+                      return const Center(
+                        child: Icon(
+                          Icons.flutter_dash_outlined,
+                          size: 200,
+                          color: Colors.red,
+                        ),
+                      );
+                    }
 
                     return ListView.builder(
                       itemCount: listArchetype.length,

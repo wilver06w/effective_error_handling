@@ -9,12 +9,6 @@ class GetOrdersUseCase {
   });
   final AbstractOrdersRepository repository;
 
-  Future<Either<Failure, List<Archetype>>> getOrders() async {
-    final result = await repository.getOrders();
-
-    return result.fold(
-      Left.new,
-      Right.new,
-    );
-  }
+  Future<Either<Failure, List<Archetype>>> getOrders() async =>
+      await repository.getOrders();
 }

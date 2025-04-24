@@ -33,7 +33,7 @@ class BlocOrders extends Bloc<OrdersEvent, OrdersState> {
       emit(
         ErrorGetOrderState(
           model: state.model,
-          message: l.errorMessage,
+          message: l.message,
         ),
       );
     }, (r) {
