@@ -222,22 +222,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.8.0+1"
-  dio_cache_interceptor:
-    dependency: "direct main"
-    description:
-      name: dio_cache_interceptor
-      sha256: "1346705a2057c265014d7696e3e2318b560bfb00b484dac7f9b01e2ceaebb07d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.5.1"
-  dio_smart_retry:
-    dependency: "direct main"
-    description:
-      name: dio_smart_retry
-      sha256: "3d71450c19b4d91ef4c7d726a55a284bfc11eb3634f1f25006cdfab3f8595653"
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.0.0"
   dio_web_adapter:
     dependency: transitive
     description:
@@ -330,22 +314,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  freezed:
-    dependency: "direct dev"
-    description:
-      name: freezed
-      sha256: "44c19278dd9d89292cf46e97dc0c1e52ce03275f40a97c5a348e802a924bf40e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.5.7"
-  freezed_annotation:
-    dependency: "direct main"
-    description:
-      name: freezed_annotation
-      sha256: c2e2d632dd9b8a2b7751117abcfc2b4888ecfe181bd9fca7170d9ef02e595fe2
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.4.4"
   frontend_server_client:
     dependency: transitive
     description:

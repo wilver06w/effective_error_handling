@@ -2,13 +2,14 @@ class Archetype {
   Archetype({
     this.archetypeName = '',
   });
-  String archetypeName;
 
   factory Archetype.fromJson(Map<String, dynamic> json) => Archetype(
-        archetypeName: json["archetype_name"] ?? '',
+        archetypeName: json['archetype_name'] as String? ?? '',
       );
 
-  Map<String, dynamic> toJson() => {
-        "archetype_name": archetypeName,
+  String archetypeName;
+
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'archetype_name': archetypeName,
       };
 }

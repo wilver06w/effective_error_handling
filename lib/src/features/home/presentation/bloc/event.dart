@@ -1,14 +1,14 @@
 part of 'bloc.dart';
 
-abstract class OrdersEvent extends Equatable {
-  const OrdersEvent();
+abstract class ArchetypeEvent extends Equatable {
+  const ArchetypeEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => <Object>[];
 }
 
-class GetOrderListEvent extends OrdersEvent {
-  const GetOrderListEvent({
+class GetArchetypesEvent extends ArchetypeEvent {
+  const GetArchetypesEvent({
     this.page = 1,
   });
   final int page;

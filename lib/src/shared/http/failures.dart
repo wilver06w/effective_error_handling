@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 
-abstract class Failure extends Equatable {
+abstract class Failure implements Exception, EquatableMixin {
   String get message;
 
   @override
@@ -9,31 +9,25 @@ abstract class Failure extends Equatable {
 }
 
 class ExceptionFailure extends Failure {
-  final Exception? error;
-  @override
-  final String message;
-  ExceptionFailure._({
-    required this.message,
-    this.error,
-  });
   factory ExceptionFailure.decode(Exception? error) {
     return ExceptionFailure._(
       error: error,
       message: error.toString(),
     );
   }
+  ExceptionFailure._({
+    required this.message,
+    this.error,
+  });
+  final Exception? error;
+  @override
+  final String message;
+
+  @override
+  bool? get stringify => throw UnimplementedError();
 }
 
 class DioFailure extends Failure {
-  final int? statusCode;
-  final DioException? error;
-  @override
-  final String message;
-  DioFailure._({
-    required this.message,
-    this.statusCode,
-    this.error,
-  });
   factory DioFailure.decode(
     DioException? error,
   ) {
@@ -43,16 +37,21 @@ class DioFailure extends Failure {
       message: error?.response?.statusMessage ?? '',
     );
   }
+  DioFailure._({
+    required this.message,
+    this.statusCode,
+    this.error,
+  });
+  final int? statusCode;
+  final DioException? error;
+  @override
+  final String message;
+  
+  @override
+  bool? get stringify => true;
 }
 
 class ErrorFailure extends Failure {
-  final Error? error;
-  @override
-  final String message;
-  ErrorFailure._({
-    required this.message,
-    this.error,
-  });
   factory ErrorFailure.decode(
     Error? error,
   ) {
@@ -61,4 +60,14 @@ class ErrorFailure extends Failure {
       message: error.toString(),
     );
   }
+  ErrorFailure._({
+    required this.message,
+    this.error,
+  });
+  final Error? error;
+  @override
+  final String message;
+
+  @override
+  bool? get stringify => true;
 }

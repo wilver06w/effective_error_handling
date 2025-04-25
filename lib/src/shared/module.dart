@@ -1,6 +1,7 @@
-import 'package:effective_error_handling/src/features/home/presentation/page.dart'
-    as home;
-import 'package:effective_error_handling/src/shared/http/http_client.dart';
+import 'package:flutter/material.dart';
+
+import '../features/home/presentation/page.dart' as home;
+import 'http/http_client.dart';
 
 class GlobalModule extends Module {
   @override
@@ -10,7 +11,7 @@ class GlobalModule extends Module {
   void routes(RouteManager r) {
     r.child(
       Modular.initialRoute,
-      child: (context) => const home.Page(),
+      child: (BuildContext context) => const home.Page(),
     );
   }
 }

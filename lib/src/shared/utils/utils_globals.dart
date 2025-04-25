@@ -1,16 +1,16 @@
-import 'package:effective_error_handling/generated/l10n.dart';
+import '../../../generated/l10n.dart';
 
 class UtilGlobals {
   static String formatDateDayAndMothAndYear({required DateTime date}) {
-    final day = date.day.toString().padLeft(2, '0');
-    final month = date.month.toString().padLeft(2, '0');
-    final year = date.year;
+    final String day = date.day.toString().padLeft(2, '0');
+    final String month = date.month.toString().padLeft(2, '0');
+    final int year = date.year;
 
     return '$day ${numeroAMesShort(int.parse(month))} ${S.current.ofOf} $year';
   }
 
   static String numeroAMesShort(int numero) {
-    final meses = <String>[
+    final List<String> meses = <String>[
       'ene',
       'feb',
       'mar',

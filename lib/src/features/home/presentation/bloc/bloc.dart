@@ -1,40 +1,42 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:effective_error_handling/src/features/home/data/models/archetype.dart';
-import 'package:effective_error_handling/src/features/home/domain/usecases/get_order_usecase.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../../../shared/http/failures.dart';
+import '../../data/models/archetype.dart';
+import '../../domain/usecases/get_archetypes_usecase.dart';
 
 part 'event.dart';
 part 'state.dart';
 
-class BlocOrders extends Bloc<OrdersEvent, OrdersState> {
-  BlocOrders({
+class BlocArchetypes extends Bloc<ArchetypeEvent, ArchetypesState> {
+  BlocArchetypes({
     required this.getOrdersUseCase,
   }) : super(const InitialState(Model())) {
-    on<GetOrderListEvent>(_onGetOrderListEvent);
+    on<GetArchetypesEvent>(_onGetArchetypesEvent);
   }
 
   final GetOrdersUseCase getOrdersUseCase;
 
-  Future<void> _onGetOrderListEvent(
-    GetOrderListEvent event,
-    Emitter<OrdersState> emit,
+  Future<void> _onGetArchetypesEvent(
+    GetArchetypesEvent event,
+    Emitter<ArchetypesState> emit,
   ) async {
     emit(
-      LoadingGetOrderState(
+      LoadingGetArchetypeState(
         state.model,
       ),
     );
+    
+    final (Failure?, List<Archetype>) getOrders = await getOrdersUseCase.getArchetypes();
 
-    final getOrders = await getOrdersUseCase.getOrders();
-
-    final failure = getOrders.$1;
-    final data = getOrders.$2;
+    final Failure? failure = getOrders.$1;
+    final List<Archetype> data = getOrders.$2;
 
     if (failure != null) {
       emit(
-        ErrorGetOrderState(
+        ErrorGetArchetypeState(
           model: state.model,
           message: getOrders.$1!.message,
         ),
@@ -42,7 +44,7 @@ class BlocOrders extends Bloc<OrdersEvent, OrdersState> {
       return;
     } else {
       emit(
-        LoadedGetOrderState(
+        LoadedGetArchetypeState(
           state.model.copyWith(
             listArchetype: data,
           ),

@@ -15,13 +15,14 @@ class Body extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
-            children: [
+            children: <Widget>[
               Expanded(
-                child: BlocBuilder<BlocOrders, OrdersState>(
-                  builder: (context, state) {
-                    final listArchetype = state.model.listArchetype ?? [];
+                child: BlocBuilder<BlocArchetypes, ArchetypesState>(
+                  builder: (BuildContext context, ArchetypesState state) {
+                    final List<Archetype> listArchetype =
+                        state.model.listArchetype ?? <Archetype>[];
 
-                    if (state is ErrorGetOrderState) {
+                    if (state is ErrorGetArchetypeState) {
                       return const Center(
                         child: Icon(
                           Icons.flutter_dash_outlined,
@@ -33,8 +34,8 @@ class Body extends StatelessWidget {
 
                     return ListView.builder(
                       itemCount: listArchetype.length,
-                      itemBuilder: (context, index) {
-                        final item = listArchetype[index];
+                      itemBuilder: (BuildContext context, int index) {
+                        final Archetype item = listArchetype[index];
                         return MyCard(
                           data: item,
                           onTapDelete: () {},

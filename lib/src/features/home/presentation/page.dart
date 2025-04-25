@@ -1,27 +1,27 @@
-import 'package:effective_error_handling/generated/l10n.dart';
-import 'package:effective_error_handling/src/features/home/data/models/archetype.dart';
-import 'package:effective_error_handling/src/features/home/domain/usecases/get_order_usecase.dart';
-import 'package:effective_error_handling/src/features/home/presentation/bloc/bloc.dart';
-import 'package:effective_error_handling/src/shared/http/http_client.dart'
-    hide ModularWatchExtension;
-import 'package:effective_error_handling/src/shared/utils/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'package:effective_error_handling/src/features/home/presentation/_sections/body.dart';
-part 'package:effective_error_handling/src/features/home/presentation/_sections/my_card.dart';
+import '../../../../generated/l10n.dart';
+import '../../../shared/http/http_client.dart' hide ModularWatchExtension;
+import '../../../shared/utils/loading.dart';
+import '../data/models/archetype.dart';
+import '../domain/usecases/get_archetypes_usecase.dart';
+import 'bloc/bloc.dart';
+
+part 'package:effective_error_handling/src/features/home/presentation/widgets/body.dart';
+part 'package:effective_error_handling/src/features/home/presentation/widgets/my_card.dart';
 
 class Page extends StatelessWidget {
   const Page({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final getOrdersUseCase = Modular.get<GetOrdersUseCase>();
-    return BlocProvider(
-      create: (context) => BlocOrders(
+    final GetOrdersUseCase getOrdersUseCase = Modular.get<GetOrdersUseCase>();
+    return BlocProvider<BlocArchetypes>(
+      create: (BuildContext context) => BlocArchetypes(
         getOrdersUseCase: getOrdersUseCase,
-      )..add(const GetOrderListEvent()),
-      child: const BlocListener<BlocOrders, OrdersState>(
+      )..add(const GetArchetypesEvent()),
+      child: const BlocListener<BlocArchetypes, ArchetypesState>(
         listener: _listener,
         child: Body(),
       ),
@@ -29,10 +29,10 @@ class Page extends StatelessWidget {
   }
 }
 
-Future<void> _listener(BuildContext context, OrdersState state) async {
-  if (state is LoadingGetOrderState) {
+Future<void> _listener(BuildContext context, ArchetypesState state) async {
+  if (state is LoadingGetArchetypeState) {
     AppLoading.show(context);
-  } else if (state is ErrorGetOrderState) {
+  } else if (state is ErrorGetArchetypeState) {
     Navigator.pop(context);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -40,7 +40,7 @@ Future<void> _listener(BuildContext context, OrdersState state) async {
         backgroundColor: Colors.red,
       ),
     );
-  } else if (state is LoadedGetOrderState) {
+  } else if (state is LoadedGetArchetypeState) {
     Navigator.pop(context);
   }
 }
