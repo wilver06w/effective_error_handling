@@ -1,7 +1,14 @@
-import 'package:effective_error_handling/src/features/home/inject.dart';
-import 'package:effective_error_handling/src/shared/http/http_client.dart';
-import 'package:effective_error_handling/src/shared/module.dart';
+import '../shared/http/http_client.dart';
+import '../shared/inject.dart';
+import '../shared/module.dart';
 
+/// Módulo principal que coordina la inyección de dependencias del feature home.
+///
+/// Responsabilidades:
+/// - Coordina la inyección de dependencias de todas las capas
+/// - Asegura que las dependencias estén disponibles en el orden correcto
+/// - Mantiene la configuración de inyección de dependencias centralizada
+///
 class AppModule extends Module {
   @override
   void binds(Injector i) {

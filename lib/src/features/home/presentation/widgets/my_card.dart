@@ -2,10 +2,10 @@ part of 'package:effective_error_handling/src/features/home/presentation/page.da
 
 class MyCard extends StatelessWidget {
   const MyCard({
-    super.key,
     required this.onTap,
     required this.onTapDelete,
     required this.data,
+    super.key,
   });
   final Archetype data;
   final VoidCallback onTap;
@@ -20,7 +20,7 @@ class MyCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
-          boxShadow: [
+          boxShadow: <BoxShadow>[
             BoxShadow(
               color: Colors.grey.withValues(alpha: 0.1),
               spreadRadius: 1,
@@ -33,7 +33,7 @@ class MyCard extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            children: <Widget>[
               Expanded(
                 child: Text(
                   data.archetypeName,

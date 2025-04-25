@@ -1,6 +1,7 @@
-import 'package:effective_error_handling/src/shared/utils/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+
+import 'ui.dart';
 
 class AppLoading {
   static void show(

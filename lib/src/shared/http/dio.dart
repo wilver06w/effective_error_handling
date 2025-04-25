@@ -12,9 +12,10 @@ import 'package:dio/dio.dart';
 /// By defualt
 class SharedDio {
   SharedDio({
+    required String baseUrl,
+
     /// only for test, this value for test should be a mock
     Dio? dioInstance,
-    required String baseUrl,
     this.enableLogs = true,
   }) {
     _dioInstance = dioInstance ?? Dio()
@@ -35,7 +36,7 @@ class SharedDio {
   ///
 
   void _addHeaders() {
-    _dioInstance.options.headers = {
+    _dioInstance.options.headers = <String, dynamic>{
       Headers.contentTypeHeader: Headers.jsonContentType,
       Headers.acceptHeader: Headers.jsonContentType,
       HttpHeaders.acceptEncodingHeader: 'gzip',
